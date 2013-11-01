@@ -1,7 +1,9 @@
 iBeacon
 =======
 
-Bluetooth LE location beacon iOS App using Estimote SDK
+Bluetooth LE location beacon iOS App using Estimote SDK.
+
+iPhone only right now. iPad version coming soon.
 
 
 To build:
