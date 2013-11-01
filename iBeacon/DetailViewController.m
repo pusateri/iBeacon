@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "AppDelegate.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -33,11 +34,35 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
+    // core data not used yet
+}
 
-    if (self.detailItem) {
-        
+- (void)startup
+{
+    NSString *idString = [[NSUserDefaults standardUserDefaults] objectForKey:defaultIdentifierKey];
+    NSNumber *major = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMajorKey];
+    self.majorLabel.text = [major stringValue];
+    NSNumber *minor = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMinorKey];
+    self.minorLabel.text = [minor stringValue];
+    
+    ESTBeaconManager *manager = [[ESTBeaconManager alloc] init];
+    manager.delegate = self;
+    self.beaconManager = manager;
+    
+    [self.beaconManager startAdvertisingWithMajor:[major intValue] withMinor:[minor intValue] withIdentifier:idString];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
     }
+    [super viewWillDisappear:animated];
+    
+    [self.beaconManager stopAdvertising];
+    
+    self.beaconManager = nil;
 }
 
 - (void)viewDidLoad
@@ -45,6 +70,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    
+    [self startup];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,25 +80,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)startup
-{
-    ESTBeaconManager *manager = [[ESTBeaconManager alloc] init];
-    manager.delegate = self;
-    self.beaconManager = manager;
-    
-    [self performSelector:@selector(advertise) withObject:nil afterDelay:1.0];
-}
-
-- (void)advertise
-{
-    ESTBeaconMajorValue major16 = 88;
-    ESTBeaconMinorValue minor16 = 8;
-    NSNumber *meetingNumber = [NSNumber numberWithInt:major16];
-    NSNumber *roomNumber = [NSNumber numberWithInt:minor16];
-    self.majorLabel.text = [meetingNumber stringValue];
-    self.minorLabel.text = [roomNumber stringValue];
-    [self.beaconManager startAdvertisingWithMajor:major16 withMinor:minor16 withIdentifier:@"IETF"];
-}
 
 #pragma mark ESTBeaconManager Delegate
 
@@ -82,7 +90,7 @@
     } else {
         ESTBeaconRegion *region = manager.virtualBeaconRegion;
         NSUUID *uuid = region.proximityUUID;
-        self.minorLabel.text = [uuid UUIDString];
+        self.uuidLabel.text = [uuid UUIDString];
     }
 }
 

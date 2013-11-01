@@ -7,8 +7,8 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "AppDelegate.h"
 
 @implementation MasterViewController
 
@@ -26,6 +26,13 @@
     [super viewDidLoad];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    NSString *idString = [[NSUserDefaults standardUserDefaults] objectForKey:defaultIdentifierKey];
+    self.identiferField.text = idString;
+    NSNumber *major = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMajorKey];
+    self.majorField.text = [major stringValue];
+    NSNumber *minor = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMinorKey];
+    self.minorField.text = [minor stringValue];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,11 +74,22 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField == self.identiferField) {
-
+        NSString *old = [[NSUserDefaults standardUserDefaults] objectForKey:defaultIdentifierKey];
+        if (![old isEqualToString:textField.text]) {
+            [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:defaultIdentifierKey];
+        }
     } else if (textField == self.majorField) {
-    
+        NSNumber *old = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMajorKey];
+        if (![[old stringValue] isEqualToString:textField.text]) {
+            NSNumber *new = [NSNumber numberWithInt:[textField.text intValue]];
+            [[NSUserDefaults standardUserDefaults] setObject:new forKey:defaultMajorKey];
+        }
     } else if (textField == self.minorField) {
-   
+        NSNumber *old = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMinorKey];
+        if (![[old stringValue] isEqualToString:textField.text]) {
+            NSNumber *new = [NSNumber numberWithInt:[textField.text intValue]];
+            [[NSUserDefaults standardUserDefaults] setObject:new forKey:defaultMinorKey];
+        }
     }
     self.editField = nil;
 }

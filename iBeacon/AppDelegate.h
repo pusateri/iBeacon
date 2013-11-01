@@ -19,4 +19,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+extern NSString *defaultMajorKey;
+extern NSString *defaultMinorKey;
+extern NSString *defaultIdentifierKey;
+
 @end

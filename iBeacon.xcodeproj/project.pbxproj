@@ -11,6 +11,7 @@
 		F82AEEFE18245641001CE75D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEEFB18245641001CE75D /* CoreLocation.framework */; };
 		F82AEEFF18245641001CE75D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEEFC18245641001CE75D /* SystemConfiguration.framework */; };
 		F82AEF07182456BF001CE75D /* libEstimoteSDK7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEF06182456BF001CE75D /* libEstimoteSDK7.a */; };
+		F82AEF0D18247313001CE75D /* estimote-virtual-beacon-1-0-s-386x470.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F82AEF0C18247313001CE75D /* estimote-virtual-beacon-1-0-s-386x470.jpg */; };
 		F89EA170182454E8005B28FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89EA16F182454E8005B28FD /* Foundation.framework */; };
 		F89EA172182454E8005B28FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89EA171182454E8005B28FD /* CoreGraphics.framework */; };
 		F89EA174182454E8005B28FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89EA173182454E8005B28FD /* UIKit.framework */; };
@@ -51,6 +52,7 @@
 		F82AEF04182456BF001CE75D /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
 		F82AEF05182456BF001CE75D /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		F82AEF06182456BF001CE75D /* libEstimoteSDK7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK7.a; sourceTree = "<group>"; };
+		F82AEF0C18247313001CE75D /* estimote-virtual-beacon-1-0-s-386x470.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "estimote-virtual-beacon-1-0-s-386x470.jpg"; sourceTree = "<group>"; };
 		F89EA16C182454E8005B28FD /* iBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89EA16F182454E8005B28FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F89EA171182454E8005B28FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,6 +133,7 @@
 		F89EA163182454E8005B28FD = {
 			isa = PBXGroup;
 			children = (
+				F82AEF0C18247313001CE75D /* estimote-virtual-beacon-1-0-s-386x470.jpg */,
 				F82AEF00182456BF001CE75D /* EstimoteSDK */,
 				F89EA177182454E8005B28FD /* iBeacon */,
 				F89EA1A0182454E8005B28FD /* iBeaconTests */,
@@ -289,6 +292,7 @@
 				F89EA188182454E8005B28FD /* Main_iPad.storyboard in Resources */,
 				F89EA193182454E8005B28FD /* Images.xcassets in Resources */,
 				F89EA185182454E8005B28FD /* Main_iPhone.storyboard in Resources */,
+				F82AEF0D18247313001CE75D /* estimote-virtual-beacon-1-0-s-386x470.jpg in Resources */,
 				F89EA17C182454E8005B28FD /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

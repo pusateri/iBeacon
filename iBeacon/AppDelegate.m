@@ -16,6 +16,24 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+NSString *defaultMajorKey = @"defaultMajorKey";
+NSString *defaultMinorKey = @"defaultMinorKey";
+NSString *defaultIdentifierKey = @"defaultIdentifierKey";
+
++ (void)initialize
+{
+    if ([self class] == [AppDelegate class]) {
+        NSNumber *defaultMajor = [NSNumber numberWithInt:7];
+        NSNumber *defaultMinor = [NSNumber numberWithInt:11];
+        NSDictionary *resourceDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      defaultMajor, defaultMajorKey,
+                                      defaultMinor, defaultMinorKey,
+                                      @"Test", defaultIdentifierKey,
+                                      nil];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:resourceDict];
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
