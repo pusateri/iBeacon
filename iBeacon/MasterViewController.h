@@ -12,11 +12,16 @@
 
 #import <CoreData/CoreData.h>
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MasterViewController : UITableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (strong, nonatomic) IBOutlet UITextField *identiferField;
+@property (strong, nonatomic) IBOutlet UITextField *majorField;
+@property (strong, nonatomic) IBOutlet UITextField *minorField;
+
+@property (nonatomic, retain) UITextField *editField;
 
 @end

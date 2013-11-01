@@ -36,7 +36,7 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+        
     }
 }
 
@@ -51,6 +51,39 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)startup
+{
+    ESTBeaconManager *manager = [[ESTBeaconManager alloc] init];
+    manager.delegate = self;
+    self.beaconManager = manager;
+    
+    [self performSelector:@selector(advertise) withObject:nil afterDelay:1.0];
+}
+
+- (void)advertise
+{
+    ESTBeaconMajorValue major16 = 88;
+    ESTBeaconMinorValue minor16 = 8;
+    NSNumber *meetingNumber = [NSNumber numberWithInt:major16];
+    NSNumber *roomNumber = [NSNumber numberWithInt:minor16];
+    self.majorLabel.text = [meetingNumber stringValue];
+    self.minorLabel.text = [roomNumber stringValue];
+    [self.beaconManager startAdvertisingWithMajor:major16 withMinor:minor16 withIdentifier:@"IETF"];
+}
+
+#pragma mark ESTBeaconManager Delegate
+
+- (void)beaconManagerDidStartAdvertising:(ESTBeaconManager *)manager error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"beaconManagerDidStartAdvertising: %@", [error localizedDescription]);
+    } else {
+        ESTBeaconRegion *region = manager.virtualBeaconRegion;
+        NSUUID *uuid = region.proximityUUID;
+        self.minorLabel.text = [uuid UUIDString];
+    }
 }
 
 #pragma mark - Split view

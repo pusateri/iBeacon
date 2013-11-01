@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F82AEEFD18245641001CE75D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEEFA18245640001CE75D /* CoreBluetooth.framework */; };
+		F82AEEFE18245641001CE75D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEEFB18245641001CE75D /* CoreLocation.framework */; };
+		F82AEEFF18245641001CE75D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEEFC18245641001CE75D /* SystemConfiguration.framework */; };
+		F82AEF07182456BF001CE75D /* libEstimoteSDK7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AEF06182456BF001CE75D /* libEstimoteSDK7.a */; };
 		F89EA170182454E8005B28FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89EA16F182454E8005B28FD /* Foundation.framework */; };
 		F89EA172182454E8005B28FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89EA171182454E8005B28FD /* CoreGraphics.framework */; };
 		F89EA174182454E8005B28FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89EA173182454E8005B28FD /* UIKit.framework */; };
@@ -39,6 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F82AEEFA18245640001CE75D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		F82AEEFB18245641001CE75D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F82AEEFC18245641001CE75D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F82AEF02182456BF001CE75D /* ESTBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeacon.h; sourceTree = "<group>"; };
+		F82AEF03182456BF001CE75D /* ESTBeaconDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconDefinitions.h; sourceTree = "<group>"; };
+		F82AEF04182456BF001CE75D /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
+		F82AEF05182456BF001CE75D /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
+		F82AEF06182456BF001CE75D /* libEstimoteSDK7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK7.a; sourceTree = "<group>"; };
 		F89EA16C182454E8005B28FD /* iBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89EA16F182454E8005B28FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F89EA171182454E8005B28FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,6 +82,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82AEEFD18245641001CE75D /* CoreBluetooth.framework in Frameworks */,
+				F82AEEFE18245641001CE75D /* CoreLocation.framework in Frameworks */,
+				F82AEF07182456BF001CE75D /* libEstimoteSDK7.a in Frameworks */,
+				F82AEEFF18245641001CE75D /* SystemConfiguration.framework in Frameworks */,
 				F89EA172182454E8005B28FD /* CoreGraphics.framework in Frameworks */,
 				F89EA176182454E8005B28FD /* CoreData.framework in Frameworks */,
 				F89EA174182454E8005B28FD /* UIKit.framework in Frameworks */,
@@ -91,9 +107,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F82AEF00182456BF001CE75D /* EstimoteSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F82AEF01182456BF001CE75D /* Headers */,
+				F82AEF06182456BF001CE75D /* libEstimoteSDK7.a */,
+			);
+			name = EstimoteSDK;
+			path = "iOS-SDK/EstimoteSDK";
+			sourceTree = "<group>";
+		};
+		F82AEF01182456BF001CE75D /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				F82AEF02182456BF001CE75D /* ESTBeacon.h */,
+				F82AEF03182456BF001CE75D /* ESTBeaconDefinitions.h */,
+				F82AEF04182456BF001CE75D /* ESTBeaconManager.h */,
+				F82AEF05182456BF001CE75D /* ESTBeaconRegion.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		F89EA163182454E8005B28FD = {
 			isa = PBXGroup;
 			children = (
+				F82AEF00182456BF001CE75D /* EstimoteSDK */,
 				F89EA177182454E8005B28FD /* iBeacon */,
 				F89EA1A0182454E8005B28FD /* iBeaconTests */,
 				F89EA16E182454E8005B28FD /* Frameworks */,
@@ -113,6 +151,9 @@
 		F89EA16E182454E8005B28FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F82AEEFA18245640001CE75D /* CoreBluetooth.framework */,
+				F82AEEFB18245641001CE75D /* CoreLocation.framework */,
+				F82AEEFC18245641001CE75D /* SystemConfiguration.framework */,
 				F89EA16F182454E8005B28FD /* Foundation.framework */,
 				F89EA171182454E8005B28FD /* CoreGraphics.framework */,
 				F89EA173182454E8005B28FD /* UIKit.framework */,
@@ -410,7 +451,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iBeacon/iBeacon-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../EstimoteSDK/Headers",
+				);
 				INFOPLIST_FILE = "iBeacon/iBeacon-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/pusateri/Projects/iBeacon/iOS-SDK/EstimoteSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -423,7 +473,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iBeacon/iBeacon-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../EstimoteSDK/Headers",
+				);
 				INFOPLIST_FILE = "iBeacon/iBeacon-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/pusateri/Projects/iBeacon/iOS-SDK/EstimoteSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -490,6 +549,7 @@
 				F89EA1AC182454E8005B28FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F89EA1AD182454E8005B28FD /* Build configuration list for PBXNativeTarget "iBeaconTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +558,7 @@
 				F89EA1AF182454E8005B28FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

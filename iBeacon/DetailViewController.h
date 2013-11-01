@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ESTBeaconManager.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, ESTBeaconManagerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) ESTBeaconManager *beaconManager;
+@property (strong, nonatomic) IBOutlet UILabel *majorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *minorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *uuidLabel;
+
 @end
