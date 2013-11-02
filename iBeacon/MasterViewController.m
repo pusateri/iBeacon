@@ -26,7 +26,8 @@
     [super viewDidLoad];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
+    self.running = FALSE;
+
     NSString *idString = [[NSUserDefaults standardUserDefaults] objectForKey:defaultIdentifierKey];
     self.identiferField.text = idString;
     NSNumber *major = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMajorKey];
@@ -44,8 +45,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSManagedObject *object = nil;
-        [[segue destinationViewController] setDetailItem:object];
+        [self.detailViewController start];
     }
 }
 
@@ -55,8 +55,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSManagedObject *object = nil;
-        self.detailViewController.detailItem = object;
+        if (indexPath.section == 1 && indexPath.row == 0) {
+            if (self.running) {
+                self.controllCell.textLabel.text = @"Start Beacon";
+                self.controllCell.textLabel.textColor = [UIColor greenColor];
+                self.running = FALSE;
+                [self.detailViewController stop];
+            } else {
+                self.controllCell.textLabel.text = @"Stop Beacon";
+                self.controllCell.textLabel.textColor = [UIColor redColor];
+                self.running = TRUE;
+                [self.detailViewController start];
+            }
+        }
+        
     }
     if (self.editField) {
         [self.editField resignFirstResponder];

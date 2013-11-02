@@ -21,7 +21,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *identiferField;
 @property (strong, nonatomic) IBOutlet UITextField *majorField;
 @property (strong, nonatomic) IBOutlet UITextField *minorField;
+@property (strong, nonatomic) IBOutlet UITableViewCell *controllCell;
 
-@property (nonatomic, retain) UITextField *editField;
+@property (strong, nonatomic) UITextField *editField;
+@property () BOOL running;
 
 @end

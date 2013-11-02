@@ -18,4 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *minorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *uuidLabel;
 
+- (void)start;
+- (void)stop;
+
 @end

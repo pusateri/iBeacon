@@ -11,7 +11,6 @@
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-- (void)configureView;
 @end
 
 @implementation DetailViewController
@@ -22,9 +21,6 @@
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
     }
 
     if (self.masterPopoverController != nil) {
@@ -32,12 +28,14 @@
     }        
 }
 
-- (void)configureView
+- (void)resetView
 {
-    // core data not used yet
+    self.majorLabel.text = @"Major";
+    self.minorLabel.text = @"Minor";
+    self.uuidLabel.text = @"UUID";
 }
 
-- (void)startup
+- (void)start
 {
     NSString *idString = [[NSUserDefaults standardUserDefaults] objectForKey:defaultIdentifierKey];
     NSNumber *major = [[NSUserDefaults standardUserDefaults] objectForKey:defaultMajorKey];
@@ -52,6 +50,12 @@
     [self.beaconManager startAdvertisingWithMajor:[major intValue] withMinor:[minor intValue] withIdentifier:idString];
 }
 
+- (void)stop
+{
+    [self.beaconManager stopAdvertising];
+    [self resetView];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
@@ -60,7 +64,7 @@
     }
     [super viewWillDisappear:animated];
     
-    [self.beaconManager stopAdvertising];
+    [self stop];
     
     self.beaconManager = nil;
 }
@@ -69,9 +73,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-    
-    [self startup];
+    [self resetView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,7 +100,7 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    barButtonItem.title = NSLocalizedString(@"Setup", @"Setup");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }
