@@ -65,7 +65,7 @@
     [super viewWillDisappear:animated];
     
     [self stop];
-    
+    self.autostart = NO;
     self.beaconManager = nil;
 }
 
@@ -74,6 +74,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self resetView];
+    
+    if (self.autostart) {
+        [self start];
+    }
 }
 
 - (void)didReceiveMemoryWarning

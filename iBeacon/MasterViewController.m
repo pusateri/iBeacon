@@ -45,7 +45,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        [self.detailViewController start];
+        self.detailViewController = [segue destinationViewController];
+        self.detailViewController.autostart = YES;
     }
 }
 
@@ -56,6 +57,7 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         if (indexPath.section == 1 && indexPath.row == 0) {
+            self.detailViewController.autostart = NO;
             if (self.running) {
                 self.controllCell.textLabel.text = @"Start Beacon";
                 self.controllCell.textLabel.textColor = [UIColor greenColor];

@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *minorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *uuidLabel;
 
+@property () BOOL autostart;
+
 - (void)start;
 - (void)stop;
 
