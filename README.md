@@ -1,11 +1,15 @@
 iBeacon
 =======
 
-Bluetooth LE location beacon iOS App using Estimote SDK.
+Bluetooth Low Energy (LE) location beacon iOS App using the [Estimote](http://estimote.com/api/) API.
 
-iPhone only right now. iPad version coming soon.
+Works on all iOS devices with Bluetooth Low Energy 4.0 including:
 
-
+* iPhone 4S and later,
+* iPad 3rd generation and later,
+* iPad mini (all),
+* iPod Touch 5th generation
+	
 To build:
 
 1. clone this tree
